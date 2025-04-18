@@ -10,10 +10,11 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
         
         :root {
-            --primary: #5B3DE8;
+            --primary: #6847F5;
             --secondary: #7047F7;
             --dark: #0A0A20;
-            --darker: #050514;
+            --darker: #080817;
+            --deepdark: #050514;
             --light: #ffffff;
             --accent: #00E6F6;
             --text-gray: #A9A9C5;
@@ -51,8 +52,6 @@
         .btn {
             display: inline-block;
             padding: 12px 30px;
-            background: var(--primary);
-            color: var(--light);
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
@@ -64,7 +63,12 @@
             z-index: 1;
         }
         
-        .btn:hover {
+        .btn-primary {
+            background: var(--primary);
+            color: var(--light);
+        }
+        
+        .btn-primary:hover {
             background: var(--secondary);
             transform: translateY(-3px);
             box-shadow: 0 10px 25px rgba(91, 61, 232, 0.3);
@@ -77,6 +81,8 @@
         
         .btn-accent:hover {
             background: #00d1e0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 230, 246, 0.3);
         }
         
         .section-title {
@@ -159,18 +165,18 @@
         .hero::before {
             content: '';
             position: absolute;
-            width: 60%;
+            width: 45%;  /* Reduzido de 60% para 45% */
             height: 100%;
             top: 0;
             right: 0;
-            background: url('/api/placeholder/800/900') no-repeat center center/cover;
+            background: url('https://i.ibb.co/23BKtZjH/050514.png') no-repeat center center/cover;
             z-index: 0;
-            opacity: 0.8;
-            clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);
+            opacity: 0.7;  /* Reduzido um pouco a opacidade */
+            clip-path: polygon(40% 0, 100% 0, 100% 100%, 10% 100%);  /* Ajustado o polígono */
         }
         
         .hero-content {
-            width: 50%;
+            width: 60%;  /* Aumentado de 50% para 60% */
             position: relative;
             z-index: 2;
         }
@@ -895,18 +901,17 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-name">Olá, eu sou <span>William</span></h1>
+                <h1 class="hero-pre-title">Olá, eu sou</h1>
+                <h2 class="hero-name">William</h2>
                 <p class="hero-tagline">Desenvolvedor Web & Especialista em Inteligência Artificial com mais de 6 anos de experiência criando soluções tecnológicas inovadoras e automatizações inteligentes.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="btn">Fale Comigo</a>
+                    <a href="#contact" class="btn btn-primary">Fale Comigo</a>
                     <a href="#projects" class="btn btn-accent">Meus Projetos</a>
                 </div>
             </div>
         </div>
-        <div class="floating-shapes">
-            <div class="shape shape1"></div>
-            <div class="shape shape2"></div>
-        </div>
+        <div class="circle-decoration circle-1"></div>
+        <div class="circle-decoration circle-2"></div>
     </section>
 
     <!-- About Section -->
@@ -1090,63 +1095,227 @@
         <div class="container">
             <h2 class="section-title">PROJETOS</h2>
             <div class="project-filters">
-                <button class="project-filter active">Todos</button>
-                <button class="project-filter">Web</button>
-                <button class="project-filter">Automação</button>
-                <button class="project-filter">IA</button>
+                <button class="project-filter active" data-filter="all">Todos</button>
+                <button class="project-filter" data-filter="web">Web</button>
+                <button class="project-filter" data-filter="automacao">Automação</button>
+                <button class="project-filter" data-filter="ia">IA</button>
             </div>
             <div class="projects-grid">
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <img src="/api/placeholder/400/400" alt="Projeto 1" class="project-img">
                     <div class="project-overlay">
                         <h3 class="project-title">E-commerce Inteligente</h3>
                         <p class="project-category">Web Development</p>
-                        <a href="#" class="btn">Ver Detalhes</a>
+                        <button class="btn project-details-btn" data-project="projeto1">Ver Detalhes</button>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-category="automacao ia">
                     <img src="/api/placeholder/400/400" alt="Projeto 2" class="project-img">
                     <div class="project-overlay">
                         <h3 class="project-title">Chatbot para Atendimento</h3>
                         <p class="project-category">Automação & IA</p>
-                        <a href="#" class="btn">Ver Detalhes</a>
+                        <button class="btn project-details-btn" data-project="projeto2">Ver Detalhes</button>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <img src="/api/placeholder/400/400" alt="Projeto 3" class="project-img">
                     <div class="project-overlay">
                         <h3 class="project-title">App de Gestão</h3>
                         <p class="project-category">Mobile & Web</p>
-                        <a href="#" class="btn">Ver Detalhes</a>
+                        <button class="btn project-details-btn" data-project="projeto3">Ver Detalhes</button>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-category="ia">
                     <img src="/api/placeholder/400/400" alt="Projeto 4" class="project-img">
                     <div class="project-overlay">
                         <h3 class="project-title">Sistema de Análise de Dados</h3>
                         <p class="project-category">IA & Analytics</p>
-                        <a href="#" class="btn">Ver Detalhes</a>
+                        <button class="btn project-details-btn" data-project="projeto4">Ver Detalhes</button>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-category="automacao">
                     <img src="/api/placeholder/400/400" alt="Projeto 5" class="project-img">
                     <div class="project-overlay">
                         <h3 class="project-title">Automação de Marketing</h3>
                         <p class="project-category">Automação</p>
-                        <a href="#" class="btn">Ver Detalhes</a>
+                        <button class="btn project-details-btn" data-project="projeto5">Ver Detalhes</button>
                     </div>
                 </div>
-                <div class="project-card">
+                <div class="project-card" data-category="web">
                     <img src="/api/placeholder/400/400" alt="Projeto 6" class="project-img">
                     <div class="project-overlay">
                         <h3 class="project-title">Portal Educacional</h3>
                         <p class="project-category">Web Development</p>
-                        <a href="#" class="btn">Ver Detalhes</a>
+                        <button class="btn project-details-btn" data-project="projeto6">Ver Detalhes</button>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <!-- Project Modal -->
+        <div class="project-modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <div class="modal-body">
+                    <!-- Modal content will be loaded here -->
+                </div>
+            </div>
+        </div>
     </section>
+    
+    <!-- Modal Styles -->
+    <style>
+        .project-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .project-modal.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            background-color: var(--dark);
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid var(--primary);
+            border-radius: 15px;
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .project-modal.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .close-modal {
+            color: var(--text-gray);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--primary);
+        }
+        
+        .modal-body {
+            padding: 20px 0;
+        }
+        
+        .modal-project-title {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--light);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 15px;
+        }
+        
+        .modal-project-category {
+            display: inline-block;
+            margin-bottom: 20px;
+            background: var(--primary);
+            color: var(--light);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .modal-project-description {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+        
+        .modal-project-image {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            border: 1px solid var(--primary);
+        }
+        
+        .modal-project-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .modal-detail-item {
+            background: rgba(91, 61, 232, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(91, 61, 232, 0.3);
+        }
+        
+        .modal-detail-label {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .modal-detail-value {
+            color: var(--text-gray);
+        }
+        
+        .modal-project-tech {
+            margin-bottom: 30px;
+        }
+        
+        .modal-tech-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+        
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-tag {
+            background: rgba(91, 61, 232, 0.1);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(91, 61, 232, 0.3);
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+            
+            .modal-project-details {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Projeto cards - hide/show based on filter */
+        .project-card.hide {
+            display: none;
+        }
+    </style>
 
     <!-- Company Section -->
     <section class="company" id="company">
@@ -1317,6 +1486,7 @@
 
         // Project Filters
         const filterButtons = document.querySelectorAll('.project-filter');
+        const projectCards = document.querySelectorAll('.project-card');
         
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
@@ -1326,9 +1496,178 @@
                 // Add active class to clicked button
                 this.classList.add('active');
                 
-                // Here you would add filter functionality for projects
-                // This is just a visual demo
+                // Get filter value
+                const filterValue = this.getAttribute('data-filter');
+                
+                // Filter projects
+                projectCards.forEach(card => {
+                    if (filterValue === 'all') {
+                        card.classList.remove('hide');
+                    } else {
+                        const categories = card.getAttribute('data-category').split(' ');
+                        if (categories.includes(filterValue)) {
+                            card.classList.remove('hide');
+                        } else {
+                            card.classList.add('hide');
+                        }
+                    }
+                });
             });
+        });
+
+        // Project Modal
+        const modal = document.querySelector('.project-modal');
+        const modalContent = document.querySelector('.modal-content');
+        const modalBody = document.querySelector('.modal-body');
+        const closeModal = document.querySelector('.close-modal');
+        const projectButtons = document.querySelectorAll('.project-details-btn');
+        
+        // Project details data
+        const projectDetails = {
+            projeto1: {
+                title: 'E-commerce Inteligente',
+                category: 'Web Development',
+                image: '/api/placeholder/700/400',
+                description: 'Uma plataforma de e-commerce completa com recomendações personalizadas baseadas em IA. O sistema analisa o comportamento do usuário para oferecer produtos relevantes e aumentar a taxa de conversão.',
+                client: 'TechStore',
+                duration: '3 meses',
+                year: '2024',
+                link: 'https://example.com/projeto1',
+                technologies: ['HTML/CSS', 'JavaScript', 'React', 'Node.js', 'MongoDB', 'TensorFlow']
+            },
+            projeto2: {
+                title: 'Chatbot para Atendimento',
+                category: 'Automação & IA',
+                image: '/api/placeholder/700/400',
+                description: 'Chatbot inteligente para automatização do atendimento ao cliente, capaz de entender linguagem natural e integrado com o sistema de CRM. Reduziu o tempo de resposta em 80% e aumentou a satisfação dos clientes.',
+                client: 'Empresa de Seguros X',
+                duration: '2 meses',
+                year: '2024',
+                link: 'https://example.com/projeto2',
+                technologies: ['Python', 'NLP', 'API OpenAI', 'Supabase', 'N8N', 'Integração WhatsApp']
+            },
+            projeto3: {
+                title: 'App de Gestão',
+                category: 'Mobile & Web',
+                image: '/api/placeholder/700/400',
+                description: 'Aplicativo multiplataforma para gestão empresarial completa, incluindo controle de estoque, finanças, vendas e relatórios em tempo real.',
+                client: 'Distribuidora Y',
+                duration: '4 meses',
+                year: '2023',
+                link: 'https://example.com/projeto3',
+                technologies: ['Flutter', 'Firebase', 'React', 'Node.js', 'REST API']
+            },
+            projeto4: {
+                title: 'Sistema de Análise de Dados',
+                category: 'IA & Analytics',
+                image: '/api/placeholder/700/400',
+                description: 'Plataforma de análise de dados com visualizações interativas e relatórios automatizados. O sistema utiliza inteligência artificial para identificar tendências e fornecer insights valiosos.',
+                client: 'Agência de Marketing Z',
+                duration: '3 meses',
+                year: '2024',
+                link: 'https://example.com/projeto4',
+                technologies: ['Python', 'TensorFlow', 'Pandas', 'D3.js', 'Flask', 'AWS']
+            },
+            projeto5: {
+                title: 'Automação de Marketing',
+                category: 'Automação',
+                image: '/api/placeholder/700/400',
+                description: 'Sistema integrado de automação de marketing que gerencia campanhas em múltiplos canais, segmentação de clientes e análise de resultados.',
+                client: 'E-commerce W',
+                duration: '2 meses',
+                year: '2023',
+                link: 'https://example.com/projeto5',
+                technologies: ['N8N', 'Zapier', 'API Meta', 'API Google', 'JavaScript', 'Node.js']
+            },
+            projeto6: {
+                title: 'Portal Educacional',
+                category: 'Web Development',
+                image: '/api/placeholder/700/400',
+                description: 'Portal educacional completo com sistema de gestão de aprendizado (LMS), área de membros, comunidade e integração com gateways de pagamento.',
+                client: 'Instituição de Ensino K',
+                duration: '5 meses',
+                year: '2023',
+                link: 'https://example.com/projeto6',
+                technologies: ['WordPress', 'PHP', 'MySQL', 'JavaScript', 'CSS', 'APIs de Pagamento']
+            }
+        };
+        
+        // Open modal with project details
+        projectButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const projectId = this.getAttribute('data-project');
+                const project = projectDetails[projectId];
+                
+                if (project) {
+                    // Create modal content
+                    modalBody.innerHTML = `
+                        <h2 class="modal-project-title">${project.title}</h2>
+                        <span class="modal-project-category">${project.category}</span>
+                        <img src="${project.image}" alt="${project.title}" class="modal-project-image">
+                        <p class="modal-project-description">${project.description}</p>
+                        
+                        <div class="modal-project-details">
+                            <div class="modal-detail-item">
+                                <div class="modal-detail-label">Cliente:</div>
+                                <div class="modal-detail-value">${project.client}</div>
+                            </div>
+                            <div class="modal-detail-item">
+                                <div class="modal-detail-label">Duração:</div>
+                                <div class="modal-detail-value">${project.duration}</div>
+                            </div>
+                            <div class="modal-detail-item">
+                                <div class="modal-detail-label">Ano:</div>
+                                <div class="modal-detail-value">${project.year}</div>
+                            </div>
+                            <div class="modal-detail-item">
+                                <div class="modal-detail-label">Website:</div>
+                                <div class="modal-detail-value"><a href="${project.link}" target="_blank" style="color: var(--primary);">Visitar Projeto</a></div>
+                            </div>
+                        </div>
+                        
+                        <div class="modal-project-tech">
+                            <h3 class="modal-tech-title">Tecnologias Utilizadas</h3>
+                            <div class="tech-tags">
+                                ${project.technologies.map(tech => `<span class="tech-tag">${tech}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Show modal
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    // Animation timing
+                    setTimeout(() => {
+                        modalContent.style.transform = 'translateY(0)';
+                        modalContent.style.opacity = '1';
+                    }, 100);
+                }
+            });
+        });
+        
+        // Close modal
+        closeModal.addEventListener('click', function() {
+            modalContent.style.transform = 'translateY(-50px)';
+            modalContent.style.opacity = '0';
+            
+            setTimeout(() => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                modalContent.style.transform = 'translateY(-50px)';
+                modalContent.style.opacity = '0';
+                
+                setTimeout(() => {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }, 300);
+            }
         });
 
         // Smooth Scrolling for Navigation
